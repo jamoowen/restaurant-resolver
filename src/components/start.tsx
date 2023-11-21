@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
-import { useTournamentStageStore, useTournamentRoundAmountStore, useRestaurantArrayStore1,} from '@/state/state-component';
+import { useRestaurantStore,} from '@/state/state-component';
 
 // shuffles array 
 function shuffleArray(array: RestaurantArray) {
@@ -34,13 +34,13 @@ const MatchupItem = ({ index }: { index: string }) => {
 const Start = () => {
 
     // stage state -> Entering inputs = 0; knockouts= 1;
-    const stage = useTournamentStageStore((state) => state.stage);
-    const { setStage } = useTournamentStageStore();
+    const stage = useRestaurantStore((state) => state.stage);
+    const { setStage } = useRestaurantStore();
 
-    const rounds = useTournamentRoundAmountStore((state) => state.rounds);
-    const { setRounds } = useTournamentRoundAmountStore()
+    const rounds = useRestaurantStore((state) => state.rounds);
+    const { setRounds } = useRestaurantStore()
 
-    const { setRestaurantArray1 } = useRestaurantArrayStore1();
+    const { setRestaurantArray1 } = useRestaurantStore();
 
     // This is the amount of input fields (the amount of restaurants to enter the tournament)
     const [numberMatchups, setNumberMatchups] = useState<number>(4);

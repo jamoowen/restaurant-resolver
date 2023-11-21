@@ -8,12 +8,7 @@ import MatchupOverview from '@/components/matchup-overview'
 import { IoHomeSharp } from "react-icons/io5";
 
 import {
-  useRestaurantArrayStore1,
-  useRestaurantArrayStore2,
-  useRestaurantArrayStore3,
-  useTournamentStageStore,
-  useTournamentRoundAmountStore,
-  useTournamentRoundStore,
+  useRestaurantStore
 } from '@/state/state-component';
 // Note: types are declared in globals.d.ts
 // import { useRestaurantArrayStore1 } from '@/state/state-component';
@@ -27,23 +22,23 @@ import {
 export default function Home() {
   const router = useRouter();
 
-  const currentRound = useTournamentRoundStore((state) => state.currentRound);
+  const currentRound = useRestaurantStore((state) => state.currentRound);
 
-  const stage = useTournamentStageStore((state) => state.stage);
-  const { setStage } = useTournamentStageStore();
+  const stage = useRestaurantStore((state) => state.stage);
+  const { setStage } = useRestaurantStore();
 
-  const { setCurrentRound } = useTournamentRoundStore();
+  const { setCurrentRound } = useRestaurantStore();
 
-  const { setRounds } = useTournamentRoundAmountStore();
+  const { setRounds } = useRestaurantStore();
 
-  const restaurantArray1 = useRestaurantArrayStore1((state) => state.restaurantArray);
-  const { setRestaurantArray1 } = useRestaurantArrayStore1();
+  const restaurantArray1 = useRestaurantStore((state) => state.restaurantArray);
+  const { setRestaurantArray1 } = useRestaurantStore();
 
-  const restaurantArray2 = useRestaurantArrayStore2((state) => state.restaurantArray2);
-  const { setRestaurantArray2 } = useRestaurantArrayStore2();
+  const restaurantArray2 = useRestaurantStore((state) => state.restaurantArray2);
+  const { setRestaurantArray2 } = useRestaurantStore();
 
-  const restaurantArray3 = useRestaurantArrayStore3((state) => state.restaurantArray3);
-  const { setRestaurantArray3 } = useRestaurantArrayStore3();
+  const restaurantArray3 = useRestaurantStore((state) => state.restaurantArray3);
+  const { setRestaurantArray3 } = useRestaurantStore();
 
 
 

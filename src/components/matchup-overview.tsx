@@ -4,12 +4,7 @@ import { useState, useEffect } from 'react';
 
 import {
   
-    useTournamentStageStore,
-    useTournamentRoundAmountStore,
-    useTournamentRoundStore,
-    useRestaurantArrayStore1,
-    useRestaurantArrayStore2,
-    useRestaurantArrayStore3
+    useRestaurantStore
 } from '@/state/state-component';
 import Matchup from './matchup';
 
@@ -42,16 +37,16 @@ const MatchupOverview = ({restaurantArray}: {restaurantArray: RestaurantArray}) 
 
     const router = useRouter();
 
-    const { setCurrentRound } = useTournamentRoundStore();
-    const currentRound = useTournamentRoundStore((state) => state.currentRound)
+    const { setCurrentRound } = useRestaurantStore();
+    const currentRound = useRestaurantStore((state) => state.currentRound)
 
-    const rounds = useTournamentRoundAmountStore((state) => state.rounds)
+    const rounds = useRestaurantStore((state) => state.rounds)
 
     // const restaurantArray2 = useRestaurantArrayStore2((state) => state.restaurantArray2)
-    const { setRestaurantArray2 } = useRestaurantArrayStore2();
+    const { setRestaurantArray2 } = useRestaurantStore();
 
     // const restaurantArray3 = useRestaurantArrayStore3((state) => state.restaurantArray3);
-    const { setRestaurantArray3 } = useRestaurantArrayStore3();
+    const { setRestaurantArray3 } = useRestaurantStore();
 
     // generates an array to iterate over -> I use this to insert the restaurants into a 1v1 matchup component
     const matchupList = Array.from(Array(4).keys());

@@ -1,9 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
 import {
-    useTournamentRoundStore,
-    useTournamentRoundAmountStore,
-
+    useRestaurantStore,
 } from '@/state/state-component';
 
 import { LuCrown } from "react-icons/lu";
@@ -26,9 +24,9 @@ type MatchupProps = {
  */
 const Matchup = ({ teamA, teamB, restaurantArray, winners }: MatchupProps) => {
 
-    const currentRound = useTournamentRoundStore((state) => state.currentRound)
+    const currentRound = useRestaurantStore((state) => state.currentRound)
 
-    const rounds = useTournamentRoundAmountStore((state) => state.rounds)
+    const rounds = useRestaurantStore((state) => state.rounds)
 
 
     // I want the winner to only go green and show who won, after a timeout
