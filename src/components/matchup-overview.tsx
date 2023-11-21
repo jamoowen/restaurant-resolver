@@ -10,7 +10,7 @@ import {
     useRestaurantArrayStore1,
     useRestaurantArrayStore2,
     useRestaurantArrayStore3
-} from '@/app/page';
+} from '@/state/state-component';
 import Matchup from './matchup';
 
 import { useRouter } from 'next/navigation';

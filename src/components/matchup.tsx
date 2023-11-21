@@ -4,7 +4,7 @@ import {
     useTournamentRoundStore,
     useTournamentRoundAmountStore,
 
-} from '@/app/page';
+} from '@/state/state-component';
 
 import { LuCrown } from "react-icons/lu";
 

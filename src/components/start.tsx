@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
-import { useTournamentStageStore, useTournamentRoundAmountStore, useRestaurantArrayStore1,} from '@/app/page';
+import { useTournamentStageStore, useTournamentRoundAmountStore, useRestaurantArrayStore1,} from '@/state/state-component';
 
 // shuffles array 
 function shuffleArray(array: RestaurantArray) {
