@@ -40,7 +40,7 @@ const Start = () => {
 
     // This is the amount of input fields (the amount of restaurants to enter the tournament)
     const [numberMatchups, setNumberMatchups] = useState<number>(4);
-    const [numberEmails, setNumberEmails] = useState<number>(4);
+    const [numberEmails, setNumberEmails] = useState<number>(2);
 
     const [enableEmails, setEnableEmails] = useState(false)
 
@@ -59,7 +59,7 @@ const Start = () => {
         return (
             <>
                 <label htmlFor={index}>Restaurant {Number(index) + 1}</label>
-                <input type='text' name={`restaurant${index}`} id={`restaurant${index}`} className='bg-white outline outline-black p-2 m-2 text-black ' />
+                <input type='text' name={`restaurant${index}`} id={`restaurant${index}`} className='p-2 m-2 text-black bg-white outline outline-black ' />
             </>
         )
     }
@@ -67,7 +67,7 @@ const Start = () => {
         return (
             <>
                 <label htmlFor={index}>Email Address {Number(index) + 1}</label>
-                <input type='email' name={`email${index}`} id={`email${index}`} className='bg-white outline outline-black p-2 m-2 text-black ' />
+                <input type='email' name={`email${index}`} id={`email${index}`} className='p-2 m-2 text-black bg-white outline outline-black ' />
             </>
         )
     }
@@ -129,18 +129,18 @@ const Start = () => {
 
 
     return (
-        <div className='text-black w-full overflow-scroll text-xs bg-white flex flex-col p-5'>
+        <div className='flex flex-col w-full p-2 overflow-scroll text-xs text-black bg-white sm:p-5'>
             <p className='mb-5'>Can&apos;t decide on a restaurant?</p>
             <p className='mb-5'>All of your friends want to go somewhere different?</p>
             <p>Enter the names of the restaurants you are considering below, and let fate decide where you will go.  </p>
             <span className='text-4xl'>🧙‍♂️</span>
-            <div className=" bg-white mt-5 w-full overflow-scroll text-black  items-center justify-center">
+            <div className="items-center justify-center w-full mt-5 overflow-scroll text-black bg-white ">
 
-                <form onSubmit={handleSubmit} className='overflow-scroll'>
-                    <div className="flex  grid-cols-2 text-black ">
+                <form onSubmit={handleSubmit} className=''>
+                    <div className="grid-cols-1 gap-5 text-black sm:flex ">
                         <div className='col-span-1 '>
                             {matchupList.map((num) => (
-                                <div className='p-2 gap-2 overflow-scroll' key={num}>
+                                <div className='gap-2 p-2 ' key={num}>
                                     <MatchupItem index={num.toString()} />
                                 </div>
                             ))}
@@ -148,18 +148,14 @@ const Start = () => {
 
                         </div>
 
-                        <div className='col-span-1 flex my-auto mx-auto text-white justify-self-start'>
-                            <div className='flex flex-col gap-5  text-black'>
-                                <button type='submit' className='w-24 bg-blue-500 p-2'>
+                        <div className='col-span-1 mx-auto my-auto text-white justify-self-start'>
+                            <div className='flex flex-col gap-5 px-4 text-black sm:px-0'>
+                                <button type='submit' className='w-24 p-2 bg-blue-500'>
                                     Calculate Winner
                                 </button>
 
-
                             </div>
-
                         </div>
-
-
                     </div>
                 </form>
 
@@ -170,7 +166,7 @@ const Start = () => {
                     <CiCircleMinus />
                 </button>
                 <p className='text-xs'>You can add up to 8 restaurants</p>
-                <div className='flex flex-row mt-5 gap-2  '>
+                <div className='flex flex-row gap-2 mt-5 '>
                     Send Email Results
                     <Checkbox
                         onCheckedChange={(checked: boolean) => setEnableEmails(checked)}
@@ -188,7 +184,7 @@ const Start = () => {
                             <form onSubmit={submitEmails} ref={emailFormRef}>
 
                                 {emailList.map((num) => (
-                                    <div className='p-2 gap-2' key={num}>
+                                    <div className='gap-2 p-2' key={num}>
                                         <EmailItem index={num.toString()} />
                                     </div>
                                 ))}

@@ -91,7 +91,7 @@ const Matchup = ({ teamA, teamB, restaurantArray, winners }: MatchupProps) => {
 
             if (rounds == currentRound) {
                 setFinalWinner(true)
-                if (emailList) {
+                if (emailList[0]) {
                     sendEmails();
                 }
 
@@ -114,12 +114,12 @@ const Matchup = ({ teamA, teamB, restaurantArray, winners }: MatchupProps) => {
 
 
     return (
-        <div className="grid-cols-3  p-2 flex gap-2 bg-outline-white rounded-xl overflow-scroll">
-            <div className="col-span-1  flex flex-col" >
+        <div className="flex grid-cols-3 gap-2 p-2 overflow-scroll bg-outline-white rounded-xl">
+            <div className="flex flex-col col-span-1" >
                 <div className={`w-32 overflow-scroll h-8 sm:w-48 sm:h-12 sm:text-md text-xs items-center mx-auto flex justify-center text-black ${declareWinner && winner === teamA ? 'bg-green-300' : 'bg-white'} rounded-md border border-black items-center p-1 flex`} >
                     {restaurantArray[teamA]}
                 </div>
-                <div className='text-black mx-auto flex'>
+                <div className='flex mx-auto text-black'>
                     vs
                 </div>
 
@@ -131,9 +131,9 @@ const Matchup = ({ teamA, teamB, restaurantArray, winners }: MatchupProps) => {
 
             </div>
 
-            <div className="col-span-1 flex items-center justify-center">
+            <div className="flex items-center justify-center col-span-1">
                 <div>
-                    <div className='text-yellow-500 mx-auto items-center justify-center text-xl flex'>{declareWinner && finalWinner ? <LuCrown /> : null}</div>
+                    <div className='flex items-center justify-center mx-auto text-xl text-yellow-500'>{declareWinner && finalWinner ? <LuCrown /> : null}</div>
                     <div className={`w-32 overflow-scroll h-8 sm:w-48 sm:h-12 sm:text-md text-xs items-center mx-auto flex justify-center my-auto font-bold text-black bg-white rounded-md border-2 ${declareWinner && finalWinner ? 'border-yellow-400 mb-4' : 'border-green-500'} items-center p-1 flex`} >
 
                         {declareWinner && winner != null ? restaurantArray[winner] : ''}

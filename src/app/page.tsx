@@ -31,6 +31,8 @@ export default function Home() {
 
   const { setRounds } = useRestaurantStore();
 
+  const { setEmailList } = useRestaurantStore();
+
   const restaurantArray1 = useRestaurantStore((state) => state.restaurantArray);
   const { setRestaurantArray1 } = useRestaurantStore();
 
@@ -49,14 +51,15 @@ export default function Home() {
     setRounds(1);
     setRestaurantArray2([]);
     setRestaurantArray3([]);
+    setEmailList([]);
     router.refresh();
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-10">
-      <nav onClick={handleReset} className="cursor-pointer fixed bg-black top-0 py-2 left-0 z-50 flex flex-row justify-between w-full px-2 text-2xl text-white shrink-0 bg-background"><IoHomeSharp/></nav>
-      <div className="z-10 flex flex-col max-w-5xl overflow-scroll w-full items-center gap-10 justify-between font-mono text-sm ">
-        <h1 onClick={handleReset} className='cursor-pointer text-5xl mx-auto '>Restaurant Resolver</h1>
+    <main className="flex flex-col items-center justify-between w-screen min-h-screen pt-10">
+      <nav onClick={handleReset} className="fixed top-0 left-0 z-50 flex flex-row justify-between w-full px-2 py-2 text-2xl text-white bg-black cursor-pointer shrink-0 bg-background"><IoHomeSharp/></nav>
+      <div className="z-10 flex flex-col items-center justify-between w-full max-w-5xl gap-10 overflow-scroll font-mono text-sm ">
+        <h1 onClick={handleReset} className='mx-auto text-3xl cursor-pointer sm:text-5xl '>Restaurant Resolver</h1>
 
         {stage === 0 && <Start />}
 

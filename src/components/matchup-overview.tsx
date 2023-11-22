@@ -82,13 +82,13 @@ const MatchupOverview = ({restaurantArray}: {restaurantArray: RestaurantArray}) 
 
 
     return (
-        <div className="flex flex-col gap-3 overflow-scroll w-full bg-blue-200  text-black  items-center justify-center">
-            <h2 className='animate-flash-temp text-2xl font-semibold'>Round: {currentRound===rounds?'Final Round' : currentRound} </h2>
+        <div className="flex flex-col items-center justify-center w-full gap-3 overflow-scroll text-black bg-blue-200">
+            <h2 className='text-2xl font-semibold animate-flash-temp'>Round: {currentRound===rounds?'Final Round' : currentRound} </h2>
 
             {matchupList.map((num) => (
-                <div key={num} className='items-center mx-auto flex justify-center w-full'>
+                <div key={num} className='flex items-center justify-center w-full mx-auto'>
                     {restaurantArray[num * 2] ?
-                        <div className='bg-white border items-center flex justify-center overflow-scroll border-black rounded-md p-2 w-full'>
+                        <div className='flex items-center justify-center w-full p-2 overflow-scroll bg-white border border-black rounded-md'>
                             <Matchup teamA={num * 2} teamB={restaurantArray[num * 2 + 1] ? num * 2 + 1 : null} restaurantArray={restaurantArray} winners={winners}/>
                         </div>
                         : <div key={num}></div>
