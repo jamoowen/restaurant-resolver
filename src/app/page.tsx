@@ -55,7 +55,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-10">
       <nav onClick={handleReset} className="cursor-pointer fixed bg-black top-0 py-2 left-0 z-50 flex flex-row justify-between w-full px-2 text-2xl text-white shrink-0 bg-background"><IoHomeSharp/></nav>
-      <div className="z-10 flex flex-col max-w-5xl w-full items-center gap-10 justify-between font-mono text-sm ">
+      <div className="z-10 flex flex-col max-w-5xl overflow-scroll w-full items-center gap-10 justify-between font-mono text-sm ">
         <h1 onClick={handleReset} className='cursor-pointer text-5xl mx-auto '>Restaurant Resolver</h1>
 
         {stage === 0 && <Start />}

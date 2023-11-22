@@ -4,6 +4,10 @@ import {
     useRestaurantStore,
 } from '@/state/state-component';
 
+const axios = require('axios').default;
+import { AxiosError } from 'axios';
+import { toast } from "@/components/ui/use-toast"
+
 import { LuCrown } from "react-icons/lu";
 
 
@@ -28,14 +32,51 @@ const Matchup = ({ teamA, teamB, restaurantArray, winners }: MatchupProps) => {
 
     const rounds = useRestaurantStore((state) => state.rounds)
 
+    const emailList = useRestaurantStore((state)=> state.emailList);
+
 
     // I want the winner to only go green and show who won, after a timeout
     const [declareWinner, setDeclareWinner] = useState(false)
 
     const [finalWinner, setFinalWinner] = useState(false);
 
+    
+
 
     const [winner, setWinner] = useState(0);
+
+    const sendEmails = async () => {
+        
+
+        try {
+            const { data } = await axios.post('/api/contact', {
+                
+                email: emailList,
+                message: restaurantArray[winner]
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            toast({
+                title: "Email sent!",
+                description: "The results have been sent to all recipients",
+            })
+        } catch (error) {
+            const axiosError = error as AxiosError;
+            console.error(axiosError.response?.data);
+            toast({
+                title: "ERROR!!",
+                description: "Unable to send email; please try again later",
+
+            })
+        } finally {
+          
+        }
+
+
+    }
 
 
     // after timeout, the winner is declared and shown on page
@@ -50,6 +91,10 @@ const Matchup = ({ teamA, teamB, restaurantArray, winners }: MatchupProps) => {
 
             if (rounds == currentRound) {
                 setFinalWinner(true)
+                if (emailList) {
+                    sendEmails();
+                }
+
             }
 
             if (winners.includes(teamA)) {

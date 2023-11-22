@@ -20,6 +20,9 @@ export const useRestaurantStore = create<RestaurantStoreType>()((set) =>  ({
     currentRound: 1,
     setCurrentRound: (currentRound: number) => set({ currentRound }),
 
+    emailList: [],
+    setEmailList: (emailList: EmailArray) => set ({ emailList }),
+
 }))
 
 

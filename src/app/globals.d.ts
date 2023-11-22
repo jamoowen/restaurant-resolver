@@ -5,6 +5,7 @@ export { }
 declare global {
  
     type RestaurantArray = string[];
+    type EmailArray = string[];
 
     type RestaurantStoreType = {
         restaurantArray: RestaurantArray;
@@ -24,6 +25,10 @@ declare global {
         
         rounds: number; 
         setRounds: (rounds: number) => void;
+
+        emailList: EmailArray;
+        setEmailList: (emailList: EmailArray) => void;
+
 
     }
 
